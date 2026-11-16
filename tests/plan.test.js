@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {plan,addDays,dayNumber} from '../plan.js';
+test('110日分を重複なく作成し、試験前日で終了する',()=>{assert.equal(plan.length,110);assert.equal(plan[0].date,'2026-11-17');assert.equal(plan.at(-1).date,'2027-03-06');assert.equal(new Set(plan.map(p=>p.date)).size,110);assert.equal(dayNumber('2027-03-07'),110)});
+test('全日60分、4段階を含み、架空のページを作らない',()=>{assert.equal(new Set(plan.map(p=>p.phase)).size,4);for(const p of plan){assert.equal(p.tasks.reduce((s,t)=>s+t.minutes,0),60);assert.equal(p.tasks.length,3);assert.ok(p.tasks.every(t=>!t.page));}assert.equal(addDays('2026-12-31',1),'2027-01-01')});
