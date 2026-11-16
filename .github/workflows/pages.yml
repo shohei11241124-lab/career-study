@@ -23,7 +23,7 @@ jobs:
           node-version: 22
       - run: npm test
       - uses: actions/configure-pages@v5
-      - run: mkdir -p dist && cp index.html app.js plan.js additions.js legacy-plan.js style.css manifest.webmanifest icon.svg dist/
+      - run: mkdir -p dist && cp index.html app.js plan.js additions.js textbook.js style.css manifest.webmanifest icon.svg dist/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
